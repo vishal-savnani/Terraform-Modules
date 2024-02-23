@@ -30,3 +30,11 @@ resource "aws_instance" "demo-instance" {
 
 
 }
+
+output "ami-detail" {
+  value = data.aws_ami.image.id
+}
+
+output "instace-details" {
+  value = aws_instance.demo-instance.id
+}
