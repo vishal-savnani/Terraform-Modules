@@ -12,7 +12,7 @@ provider "aws" {
   
 }
 
-data "aws_ami" "linux_ami" {
+data "aws_ami" "aws_ami" {
   name_regex = "^amzn2-ami-kernel-5.10*"
   most_recent = true
   owners = ["amazon"]
