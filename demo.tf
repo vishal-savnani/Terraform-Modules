@@ -12,7 +12,7 @@ provider "aws" {
   
 }
 
-data "aws_ami" "aws_ami" {
+data "aws_ami" "linux_ami" {
   name_regex = "^amzn2-ami-kernel-5.10*"
   most_recent = true
   owners = ["amazon"]
@@ -26,14 +26,14 @@ output "testing_ami" {
 }
 
 resource "aws_instance" "demo-instance" {
-    ami = data.aws_ami.image.id
+    ami = data.aws_ami.linux_ami.id
     instance_type = "t2.micro"
 
 
 }
 
 output "ami-detail" {
-  value = data.aws_ami.image.id
+  value = data.aws_ami.linux_ami.id
 }
 
 output "instace-details" {
