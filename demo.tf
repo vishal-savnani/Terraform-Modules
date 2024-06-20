@@ -12,16 +12,17 @@ provider "aws" {
   
 }
 
-data "aws_ami" "image" {
-    name_regex = "^al2023-ami-2023*"
-    most_recent = true
-    owners = ["amazon"]
-
-    filter {
-      name = "name"
-      values = ["al2023-ami-2023*"]
-    }
-  
+data "aws_ami" "linux_ami" {
+  name_regex = "^amzn2-ami-kernel-5.10*"
+  most_recent = true
+  owners = ["amazon"]
+  filter {
+    name = "name"
+    values = [ "amzn2-ami-kernel-5.10*" ]
+  }
+}
+output "testing_ami" {
+  value = data.aws_ami.linux_ami.id
 }
 
 resource "aws_instance" "demo-instance" {
